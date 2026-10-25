@@ -1,15 +1,14 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Cortix Analytics helps you make sense of your data and builds automated processes and tools that save time and money.">
-<title>Cortix Analytics</title>
+<meta name="description" content="Corvalytics helps you make sense of your data and builds automated processes and tools that save your team time and money.">
+<title>Corvalytics</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-body{margin:0}img{max-width:100%}
 /* Layout: one calm column of sections; the hero pairs the promise with a live-looking automation run log */
 :root {
   --bg: #F3F6F7;
@@ -52,7 +51,7 @@ p { margin: 0; }
 /* Nav */
 header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
 .nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
-.brand { font-family: var(--display); font-weight: 700; font-size: 20px; color: var(--fg); text-decoration: none; display: flex; align-items: center; gap: 10px; }
+.brand { font-family: var(--display); font-weight: 700; font-size: 21px; letter-spacing: -0.01em; color: var(--fg); text-decoration: none; display: flex; align-items: center; gap: 10px; }
 .brand-mark { width: 26px; height: 26px; border-radius: 6px; background: var(--accent); display: grid; place-items: center; }
 .brand-mark span { width: 10px; height: 10px; border: 2px solid var(--bg); border-radius: 50%; }
 .nav-links { display: flex; gap: 22px; align-items: center; }
@@ -104,7 +103,7 @@ section { padding-block: 72px; border-top: 1px solid var(--line); }
 .service .tag { font-family: var(--mono); font-size: 12.5px; color: var(--accent); }
 @media (max-width: 720px) { .services { grid-template-columns: 1fr; } }
 
-.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; counter-reset: step; }
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
 .step { display: flex; flex-direction: column; gap: 10px; padding-top: 18px; border-top: 2px solid var(--fg); min-width: 0; }
 .step .n { font-family: var(--mono); font-size: 13px; color: var(--muted); }
 .step h3 { font-size: 21px; font-weight: 500; }
@@ -114,7 +113,6 @@ section { padding-block: 72px; border-top: 1px solid var(--line); }
 .about { display: grid; grid-template-columns: 1fr 1.4fr; gap: 48px; align-items: start; }
 .about > * { min-width: 0; }
 .about-body { display: flex; flex-direction: column; gap: 16px; max-width: 38em; }
-.placeholder { background: color-mix(in srgb, var(--signal) 18%, transparent); padding: 0 4px; border-radius: 3px; }
 @media (max-width: 760px) { .about { grid-template-columns: 1fr; gap: 20px; } }
 
 .contact { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 44px 36px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 36px; align-items: center; }
@@ -129,12 +127,14 @@ section { padding-block: 72px; border-top: 1px solid var(--line); }
 footer { padding-block: 40px 56px; color: var(--muted); font-size: 14px; }
 .foot { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 </style>
-
+<style>body{margin:0}img{max-width:100%}</style>
 </head>
 <body>
+
+
 <header>
   <div class="wrap nav">
-    <a class="brand" href="#top"><span class="brand-mark"><span></span></span>Cortix Analytics</a>
+    <a class="brand" href="#top"><span class="brand-mark"><span></span></span>Corvalytics</a>
     <nav class="nav-links">
       <a href="#services">Services</a>
       <a href="#process">How it works</a>
@@ -149,7 +149,7 @@ footer { padding-block: 40px 56px; color: var(--muted); font-size: 14px; }
     <div>
       <div class="eyebrow">Data automation &amp; tooling</div>
       <h1>Make sense of your data. <em>Stop doing it by hand.</em></h1>
-      <p class="lede">Cortix Analytics helps you understand the data you already have, then builds automated processes and tools around it, so your team saves hours every week and your business saves money.</p>
+      <p class="lede">Corvalytics helps you understand the data you already have, then builds automated processes and tools around it, so your team saves hours every week and your business saves money.</p>
       <div class="hero-cta">
         <a class="btn" href="#contact">Book a free consultation</a>
         <a class="btn btn-ghost" href="#services">See what we do</a>
@@ -236,8 +236,9 @@ footer { padding-block: 40px 56px; color: var(--muted); font-size: 14px; }
         <h2>Practical help from someone who speaks data</h2>
       </div>
       <div class="about-body">
-        <p>Cortix Analytics is run by Ilan Itzkowitz. With more than 10 years of experience, Ilan has worked with organizations of every size, from local synagogues to some of the largest Fortune 100 companies.</p>
+        <p>Corvalytics is run by Ilan Itzkowitz. With more than 10 years of experience, Ilan has worked with organizations of every size, from local synagogues to some of the largest Fortune 100 companies.</p>
         <p>Every client ends up in the same place: spending less time on the manual work, and more time on the decisions that matter.</p>
+        <p><a href="https://www.linkedin.com/in/ilan-itzkowitz/" target="_blank" rel="noopener">Connect with Ilan on LinkedIn &rarr;</a></p>
       </div>
     </div>
   </section>
@@ -252,10 +253,10 @@ footer { padding-block: 40px 56px; color: var(--muted); font-size: 14px; }
         <div class="contact-box">
           <div class="eyebrow">Email</div>
           <div class="email-row">
-            <span class="email" id="email">hello@cortixanalytics.com</span>
+            <span class="email" id="email">ilan@corvalytics.com</span>
             <button class="btn btn-ghost" id="copy" type="button">Copy</button>
           </div>
-          <a class="btn" href="mailto:hello@cortixanalytics.com" style="align-self:flex-start">Send an email</a>
+          <a class="btn" href="mailto:ilan@corvalytics.com" style="align-self:flex-start">Send an email</a>
         </div>
       </div>
     </div>
@@ -264,8 +265,8 @@ footer { padding-block: 40px 56px; color: var(--muted); font-size: 14px; }
 
 <footer>
   <div class="wrap foot">
-    <span>&copy; <span id="yr">2026</span> Cortix Analytics</span>
-    <span>cortixanalytics.com</span>
+    <span>&copy; <span id="yr">2026</span> Corvalytics</span>
+    <span><a href="https://www.linkedin.com/in/ilan-itzkowitz/" target="_blank" rel="noopener" style="color:inherit">LinkedIn</a> &middot; corvalytics.com</span>
   </div>
 </footer>
 
