@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Corvalytics helps you make sense of your data and builds automated processes and tools that save your team time and money.">
+<meta name="description" content="Corvalytics takes repetitive work off your team's plate, giving you back hours every week, fewer costly mistakes, and a clear return on investment.">
 <title>Corvalytics</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <style>
-/* Layout: one calm column of sections; the hero pairs the promise with a live-looking automation run log */
+/* Layout: a calm executive one-pager. Hero pairs the promise with a "your week, before and after" card; a savings estimator makes the ROI concrete. */
 :root {
   --bg: #F3F6F7;
   --surface: #FFFFFF;
@@ -17,36 +17,34 @@
   --muted: #55646E;
   --line: #D6DEE2;
   --accent: #1F5F8B;
-  --signal: #C77A12;
-  --log-bg: #12202A;
-  --log-fg: #DCE6EC;
-  --log-dim: #7F93A0;
-  --log-ok: #6CC3A0;
+  --accent-soft: #E3EEF5;
+  --gain: #1E7A55;
+  --gain-soft: #E2F2EA;
+  --cost: #9A5A12;
   --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
   --body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
-  --mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #0E171D; --surface: #15222B; --fg: #E6EDF1; --muted: #9AABB5; --line: #26353F;
-    --accent: #7FB8E0; --signal: #E9A748; --log-bg: #0A1115; --log-fg: #DCE6EC; --log-dim: #6E8390; --log-ok: #6CC3A0;
+    --accent: #7FB8E0; --accent-soft: #1A2E3B; --gain: #6CC3A0; --gain-soft: #16302A; --cost: #E9A748;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --bg: #0E171D; --surface: #15222B; --fg: #E6EDF1; --muted: #9AABB5; --line: #26353F;
-  --accent: #7FB8E0; --signal: #E9A748; --log-bg: #0A1115; --log-fg: #DCE6EC; --log-dim: #6E8390; --log-ok: #6CC3A0;
+  --accent: #7FB8E0; --accent-soft: #1A2E3B; --gain: #6CC3A0; --gain-soft: #16302A; --cost: #E9A748;
   color-scheme: dark;
 }
 
 * { box-sizing: border-box; }
-body { background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 17px; line-height: 1.6; }
-.wrap { max-width: 1080px; margin: 0 auto; padding-inline: 20px; }
+body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 17px; line-height: 1.6; }
+.wrap { max-width: 1080px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
 a { color: var(--accent); }
-a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
 h1, h2, h3 { font-family: var(--display); line-height: 1.12; text-wrap: balance; margin: 0; }
 p { margin: 0; }
-.eyebrow { font-family: var(--mono); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.eyebrow { font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
 
 /* Nav */
 header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
@@ -58,54 +56,75 @@ header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; backg
 .nav-links a { color: var(--muted); text-decoration: none; font-size: 15px; }
 .nav-links a:hover { color: var(--fg); }
 .nav-links .btn { color: var(--bg); }
-@media (max-width: 640px) { .nav-links a:not(.btn) { display: none; } }
+@media (max-width: 700px) { .nav-links a:not(.btn) { display: none; } }
 
-.btn { display: inline-block; background: var(--accent); color: var(--bg); padding: 11px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 15px; border: none; cursor: pointer; font-family: var(--body); }
+.btn { display: inline-block; background: var(--accent); color: var(--bg); padding: 12px 22px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 15px; border: none; cursor: pointer; font-family: var(--body); }
 .btn:hover { filter: brightness(1.08); }
 .btn-ghost { background: transparent; color: var(--fg); border: 1px solid var(--line); }
 
 /* Hero */
 .hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center; padding-block: 72px 64px; }
 .hero > * { min-width: 0; }
-.hero h1 { font-size: clamp(38px, 5.6vw, 62px); font-weight: 700; letter-spacing: -0.02em; margin-top: 14px; }
+.hero h1 { font-size: clamp(38px, 5.4vw, 60px); font-weight: 700; letter-spacing: -0.02em; margin-top: 14px; }
 .hero h1 em { font-style: normal; color: var(--accent); }
-.hero .lede { font-size: 19px; color: var(--muted); max-width: 34em; margin-top: 20px; }
+.hero .lede { font-size: 19px; color: var(--muted); max-width: 33em; margin-top: 20px; }
 .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+.hero-trust { margin-top: 26px; font-size: 14px; color: var(--muted); }
+.hero-trust b { color: var(--fg); font-weight: 600; }
 @media (max-width: 860px) { .hero { grid-template-columns: 1fr; padding-block: 48px; gap: 36px; } }
 
-/* Run log */
-.log { background: var(--log-bg); color: var(--log-fg); border-radius: 14px; font-family: var(--mono); font-size: 13.5px; line-height: 1.75; overflow: hidden; box-shadow: 0 20px 50px -24px rgba(10, 25, 35, .45); }
-.log-head { display: flex; justify-content: space-between; gap: 12px; padding: 12px 18px; border-bottom: 1px solid rgba(255,255,255,.08); color: var(--log-dim); font-size: 12px; }
-.log-body { padding: 16px 18px 18px; overflow-x: auto; }
-.log-row { display: grid; grid-template-columns: 52px 1fr auto; gap: 14px; white-space: nowrap; }
-.log-row .t { color: var(--log-dim); font-variant-numeric: tabular-nums; }
-.log-row .ok { color: var(--log-ok); }
-.log-foot { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 14px 18px; border-top: 1px solid rgba(255,255,255,.08); }
-.log-foot b { color: var(--signal); font-weight: 500; }
-.log-note { font-size: 12px; color: var(--muted); margin-top: 10px; font-family: var(--mono); }
-@media (prefers-reduced-motion: no-preference) {
-  .log-row { animation: rowIn .4s ease both; }
-  .log-row:nth-child(2) { animation-delay: .15s; } .log-row:nth-child(3) { animation-delay: .3s; }
-  .log-row:nth-child(4) { animation-delay: .45s; } .log-row:nth-child(5) { animation-delay: .6s; }
-  @keyframes rowIn { from { opacity: .25; transform: translateY(4px); } to { opacity: 1; transform: none; } }
-}
+/* Before / after week card */
+.week { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; box-shadow: 0 20px 50px -28px rgba(10, 25, 35, .35); }
+.week-head { padding: 16px 22px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; gap: 12px; align-items: baseline; flex-wrap: wrap; }
+.week-head h3 { font-size: 18px; font-weight: 500; }
+.week-head span { font-size: 13px; color: var(--muted); }
+.week-row { display: grid; grid-template-columns: 1fr auto; gap: 6px 16px; padding: 14px 22px; border-bottom: 1px solid var(--line); }
+.week-row:last-of-type { border-bottom: none; }
+.week-task { font-weight: 500; }
+.week-hours { font-variant-numeric: tabular-nums; color: var(--cost); font-weight: 600; text-decoration: line-through; text-decoration-thickness: 1.5px; }
+.week-after { grid-column: 1 / -1; font-size: 14.5px; color: var(--gain); display: flex; gap: 8px; align-items: baseline; }
+.week-after::before { content: "→"; }
+.week-foot { background: var(--gain-soft); padding: 16px 22px; display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.week-foot span { color: var(--muted); font-size: 14px; }
+.week-foot b { font-family: var(--display); font-size: 24px; color: var(--gain); font-variant-numeric: tabular-nums; }
+.week-note { font-size: 12.5px; color: var(--muted); margin-top: 10px; }
 
 /* Sections */
-section { padding-block: 72px; border-top: 1px solid var(--line); }
+section { padding-block: 76px; border-top: 1px solid var(--line); }
 .section-head { display: flex; flex-direction: column; gap: 12px; max-width: 40em; margin-bottom: 40px; }
 .section-head h2 { font-size: clamp(28px, 3.6vw, 40px); font-weight: 700; letter-spacing: -0.01em; }
-.section-head p { color: var(--muted); }
+.section-head p { color: var(--muted); font-size: 18px; }
 
-.services { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
-.service { background: var(--surface); padding: 30px 28px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
-.service h3 { font-size: 22px; font-weight: 500; }
-.service p { color: var(--muted); }
-.service .tag { font-family: var(--mono); font-size: 12.5px; color: var(--accent); }
-@media (max-width: 720px) { .services { grid-template-columns: 1fr; } }
+.outcomes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.outcome { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 28px 26px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.outcome h3 { font-size: 22px; font-weight: 500; }
+.outcome p { color: var(--muted); }
+.outcome .ex { font-size: 14.5px; color: var(--fg); background: var(--accent-soft); border-radius: 8px; padding: 10px 14px; margin-top: 4px; }
+@media (max-width: 720px) { .outcomes { grid-template-columns: 1fr; } }
+.tools-line { margin-top: 28px; color: var(--muted); font-size: 15.5px; }
+.tools-line b { color: var(--fg); font-weight: 600; }
+
+/* Savings estimator */
+.calc { display: grid; grid-template-columns: 1fr 1fr; gap: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+.calc > * { min-width: 0; }
+.calc-in { padding: 32px 30px; display: flex; flex-direction: column; gap: 26px; border-right: 1px solid var(--line); }
+.field { display: flex; flex-direction: column; gap: 8px; }
+.field-top { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+.field label { font-weight: 500; }
+.field output { font-family: var(--display); font-size: 22px; font-variant-numeric: tabular-nums; color: var(--accent); }
+.field small { color: var(--muted); font-size: 13.5px; }
+input[type=range] { width: 100%; accent-color: var(--accent); }
+.calc-out { padding: 32px 30px; background: var(--gain-soft); display: flex; flex-direction: column; gap: 22px; justify-content: center; }
+.big { display: flex; flex-direction: column; gap: 2px; }
+.big span { color: var(--muted); font-size: 15px; }
+.big b { font-family: var(--display); font-size: clamp(34px, 4.6vw, 48px); line-height: 1.05; color: var(--gain); font-variant-numeric: tabular-nums; }
+.big.sm b { font-size: 28px; color: var(--fg); }
+.calc-fine { font-size: 13.5px; color: var(--muted); }
+@media (max-width: 760px) { .calc { grid-template-columns: 1fr; } .calc-in { border-right: none; border-bottom: 1px solid var(--line); } }
 
 .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
 .step { display: flex; flex-direction: column; gap: 10px; padding-top: 18px; border-top: 2px solid var(--fg); min-width: 0; }
-.step .n { font-family: var(--mono); font-size: 13px; color: var(--muted); }
+.step .n { font-size: 13px; font-weight: 600; color: var(--accent); letter-spacing: .06em; text-transform: uppercase; }
 .step h3 { font-size: 21px; font-weight: 500; }
 .step p { color: var(--muted); }
 @media (max-width: 760px) { .steps { grid-template-columns: 1fr; } }
@@ -113,6 +132,8 @@ section { padding-block: 72px; border-top: 1px solid var(--line); }
 .about { display: grid; grid-template-columns: 1fr 1.4fr; gap: 48px; align-items: start; }
 .about > * { min-width: 0; }
 .about-body { display: flex; flex-direction: column; gap: 16px; max-width: 38em; }
+.logos { display: flex; flex-wrap: wrap; gap: 10px; }
+.logos span { border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-size: 14px; font-weight: 500; background: var(--surface); }
 @media (max-width: 760px) { .about { grid-template-columns: 1fr; gap: 20px; } }
 
 .contact { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 44px 36px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 36px; align-items: center; }
@@ -121,13 +142,12 @@ section { padding-block: 72px; border-top: 1px solid var(--line); }
 .contact p { color: var(--muted); margin-top: 12px; }
 .contact-box { display: flex; flex-direction: column; gap: 12px; }
 .email-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
-.email { font-family: var(--mono); font-size: 16px; user-select: all; overflow-wrap: anywhere; }
+.email { font-size: 17px; font-weight: 500; user-select: all; overflow-wrap: anywhere; }
 @media (max-width: 760px) { .contact { grid-template-columns: 1fr; padding: 32px 22px; } }
 
 footer { padding-block: 40px 56px; color: var(--muted); font-size: 14px; }
 .foot { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 </style>
-<style>body{margin:0}img{max-width:100%}</style>
 </head>
 <body>
 
@@ -136,10 +156,11 @@ footer { padding-block: 40px 56px; color: var(--muted); font-size: 14px; }
   <div class="wrap nav">
     <a class="brand" href="#top"><span class="brand-mark"><span></span></span>Corvalytics</a>
     <nav class="nav-links">
-      <a href="#services">Services</a>
+      <a href="#outcomes">What changes</a>
+      <a href="#savings">Your savings</a>
       <a href="#process">How it works</a>
       <a href="#about">About</a>
-      <a class="btn" href="#contact">Get in touch</a>
+      <a class="btn" href="#contact">Book a call</a>
     </nav>
   </div>
 </header>
@@ -147,57 +168,98 @@ footer { padding-block: 40px 56px; color: var(--muted); font-size: 14px; }
 <main id="top">
   <div class="wrap hero">
     <div>
-      <div class="eyebrow">Data automation &amp; tooling</div>
-      <h1>Make sense of your data. <em>Stop doing it by hand.</em></h1>
-      <p class="lede">Corvalytics helps you understand the data you already have, then builds automated processes and tools around it, so your team saves hours every week and your business saves money.</p>
+      <div class="eyebrow">Business automation for busy leaders</div>
+      <h1>Give your team back <em>hours every week.</em></h1>
+      <p class="lede">Corvalytics finds the repetitive work slowing your business down and takes it off your team's plate, so your people spend their time on customers, growth and the decisions only they can make.</p>
       <div class="hero-cta">
-        <a class="btn" href="#contact">Book a free consultation</a>
-        <a class="btn btn-ghost" href="#services">See what we do</a>
+        <a class="btn" href="#contact">Book a free 30-minute call</a>
+        <a class="btn btn-ghost" href="#savings">See what you could save</a>
       </div>
+      <p class="hero-trust">10+ years on projects for <b>Google</b>, <b>Meta</b>, <b>JPMorgan Chase</b> and <b>JLL</b>, and for small businesses and nonprofits.</p>
     </div>
     <div>
-      <div class="log" role="img" aria-label="Example of an automated nightly data job that runs with no manual steps">
-        <div class="log-head"><span>nightly-sales-report</span><span>Mon 06:00</span></div>
-        <div class="log-body">
-          <div class="log-row"><span class="t">06:00</span><span>Pull orders from 3 sources</span><span class="ok">done</span></div>
-          <div class="log-row"><span class="t">06:02</span><span>Clean &amp; de-duplicate rows</span><span class="ok">done</span></div>
-          <div class="log-row"><span class="t">06:03</span><span>Reconcile against invoices</span><span class="ok">done</span></div>
-          <div class="log-row"><span class="t">06:04</span><span>Refresh dashboard</span><span class="ok">done</span></div>
-          <div class="log-row"><span class="t">06:04</span><span>Email summary to team</span><span class="ok">sent</span></div>
+      <div class="week" role="img" aria-label="Example: three weekly tasks that take about nine hours by hand, handled automatically after Corvalytics">
+        <div class="week-head"><h3>A typical week, before and after</h3><span>Example</span></div>
+        <div class="week-row">
+          <span class="week-task">Putting together the Monday report</span><span class="week-hours">4 hrs</span>
+          <span class="week-after">Arrives in your inbox at 8am, every Monday</span>
         </div>
-        <div class="log-foot"><span>Manual steps: 0</span><span>Time saved: <b>~4 hrs</b></span></div>
+        <div class="week-row">
+          <span class="week-task">Chasing updates from the team and suppliers</span><span class="week-hours">3 hrs</span>
+          <span class="week-after">Reminders go out on WhatsApp automatically</span>
+        </div>
+        <div class="week-row">
+          <span class="week-task">Finding and fixing spreadsheet mistakes</span><span class="week-hours">2 hrs</span>
+          <span class="week-after">Problems are flagged before anyone sees them</span>
+        </div>
+        <div class="week-foot"><span>Time back, every week</span><b>~9 hours</b></div>
       </div>
-      <p class="log-note">Example of a process we automate</p>
+      <p class="week-note">An illustration of the kind of work we automate. Your numbers will differ.</p>
     </div>
   </div>
 
-  <section id="services">
+  <section id="outcomes">
     <div class="wrap">
       <div class="section-head">
-        <div class="eyebrow">Services</div>
-        <h2>From scattered spreadsheets to processes that run themselves</h2>
-        <p>Every engagement aims at the same result: less time spent wrangling data, and clearer answers when you need them.</p>
+        <div class="eyebrow">What changes for you</div>
+        <h2>Less busywork. Fewer surprises. More time for what matters.</h2>
+        <p>You don't need to become technical, change how your team works, or learn new software. We fit around the way you already run things.</p>
       </div>
-      <div class="services">
-        <div class="service">
-          <span class="tag">Understand</span>
-          <h3>Data review &amp; clarity</h3>
-          <p>We look at where your data lives, how it moves, and where time gets lost, then show you what it can actually tell you.</p>
+      <div class="outcomes">
+        <div class="outcome">
+          <h3>The answers come to you</h3>
+          <p>No more waiting on someone to pull the numbers together. The updates you rely on show up on their own, on time, in a format you can read in two minutes.</p>
+          <p class="ex">Example: a one-page summary of sales, cash and open jobs in your inbox every Monday morning.</p>
         </div>
-        <div class="service">
-          <span class="tag">Automate</span>
-          <h3>Automated processes</h3>
-          <p>Repetitive work like copying between systems, cleaning files and building weekly reports gets handed to reliable, scheduled automations.</p>
+        <div class="outcome">
+          <h3>Nothing falls through the cracks</h3>
+          <p>Follow-ups, reminders and status checks happen automatically over WhatsApp or email, so you stop being the person who has to remember everything.</p>
+          <p class="ex">Example: customers get an automatic WhatsApp update when their order ships.</p>
         </div>
-        <div class="service">
-          <span class="tag">Build</span>
-          <h3>Custom tooling</h3>
-          <p>Small, purpose-built tools and integrations that fit how your team already works, instead of forcing a new system on everyone.</p>
+        <div class="outcome">
+          <h3>Your team does the job you hired them for</h3>
+          <p>Skilled people stop spending their afternoons copying, pasting and double-checking. That time goes back into serving customers and growing the business.</p>
+          <p class="ex">Example: invoices and orders flow between systems without anyone retyping them.</p>
         </div>
-        <div class="service">
-          <span class="tag">See</span>
-          <h3>Reporting &amp; dashboards</h3>
-          <p>Up-to-date dashboards and reports that refresh on their own, so decisions are based on today's numbers.</p>
+        <div class="outcome">
+          <h3>Fewer costly mistakes</h3>
+          <p>Manual work means manual errors: a wrong price, a missed order, a duplicate payment. Automated checks catch these before they cost you money or a client.</p>
+          <p class="ex">Example: a quick alert when an order is missing information, before it goes out.</p>
+        </div>
+      </div>
+      <p class="tools-line">Works with what you already use: <b>Excel</b>, <b>Google Sheets</b>, <b>WhatsApp</b>, <b>email</b>, <b>QuickBooks</b>, your CRM and more.</p>
+    </div>
+  </section>
+
+  <section id="savings">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Your return on investment</div>
+        <h2>What is repetitive work costing you?</h2>
+        <p>Move the sliders to match your business. Before any project starts, we'll give you an estimate like this for your actual processes, so you know the payback up front.</p>
+      </div>
+      <div class="calc">
+        <div class="calc-in">
+          <div class="field">
+            <div class="field-top"><label for="people">People doing repetitive work</label><output id="peopleOut" for="people">5</output></div>
+            <input type="range" id="people" min="1" max="50" step="1" value="5">
+          </div>
+          <div class="field">
+            <div class="field-top"><label for="hours">Hours each spends on it per week</label><output id="hoursOut" for="hours">6</output></div>
+            <input type="range" id="hours" min="1" max="20" step="1" value="6">
+            <small>Reports, data entry, chasing updates, fixing mistakes</small>
+          </div>
+          <div class="field">
+            <div class="field-top"><label for="rate">Cost of an hour of their time</label><output id="rateOut" for="rate">$50</output></div>
+            <input type="range" id="rate" min="20" max="200" step="5" value="50">
+            <small>Salary plus overhead, roughly</small>
+          </div>
+        </div>
+        <div class="calc-out" aria-live="polite">
+          <div class="big"><span>Hours back per year</span><b id="hoursYear">1,008</b></div>
+          <div class="big"><span>Value of that time per year</span><b id="valueYear">$50,400</b></div>
+          <div class="big sm"><span>That's like adding</span><b id="fte">0.5 full-time people</b></div>
+          <p class="calc-fine">Assumes we automate 70% of that work, over 48 working weeks. A full-time person is counted as 2,000 hours a year.</p>
         </div>
       </div>
     </div>
@@ -207,23 +269,23 @@ footer { padding-block: 40px 56px; color: var(--muted); font-size: 14px; }
     <div class="wrap">
       <div class="section-head">
         <div class="eyebrow">How it works</div>
-        <h2>A simple path from problem to time saved</h2>
+        <h2>Simple for you, from first call to results</h2>
       </div>
       <div class="steps">
         <div class="step">
           <span class="n">Step 1</span>
-          <h3>Map the process</h3>
-          <p>We sit with you to understand the task, the data involved, and what it costs you in time today.</p>
+          <h3>A free conversation</h3>
+          <p>30 minutes to talk through where your team's time goes. No preparation needed, and no obligation.</p>
         </div>
         <div class="step">
           <span class="n">Step 2</span>
-          <h3>Build &amp; automate</h3>
-          <p>We build the automation or tool, test it against your real data, and refine it with your feedback.</p>
+          <h3>A clear plan and price</h3>
+          <p>You get a short proposal: what we'll automate, what it costs, and how much time and money it should save.</p>
         </div>
         <div class="step">
           <span class="n">Step 3</span>
-          <h3>Hand over &amp; support</h3>
-          <p>You get a working solution, clear documentation, and support as your needs change.</p>
+          <h3>We build it, you see results</h3>
+          <p>Your team keeps working as usual while we set it up. Once it's running, we stay on hand as your business changes.</p>
         </div>
       </div>
     </div>
@@ -233,10 +295,11 @@ footer { padding-block: 40px 56px; color: var(--muted); font-size: 14px; }
     <div class="wrap about">
       <div class="section-head" style="margin-bottom:0">
         <div class="eyebrow">About</div>
-        <h2>Practical help from someone who speaks data</h2>
+        <h2>A practical partner, not another vendor</h2>
       </div>
       <div class="about-body">
         <p>Corvalytics is run by Ilan Itzkowitz. With more than 10 years of experience, Ilan has worked with organizations of every size, from local synagogues to some of the largest Fortune 100 companies.</p>
+        <div class="logos" aria-label="Past projects include"><span>Google</span><span>Meta</span><span>JPMorgan Chase</span><span>JLL</span></div>
         <p>Every client ends up in the same place: spending less time on the manual work, and more time on the decisions that matter.</p>
         <p><a href="https://www.linkedin.com/in/ilan-itzkowitz/" target="_blank" rel="noopener">Connect with Ilan on LinkedIn &rarr;</a></p>
       </div>
@@ -247,16 +310,16 @@ footer { padding-block: 40px 56px; color: var(--muted); font-size: 14px; }
     <div class="wrap">
       <div class="contact">
         <div>
-          <h2>Have a process that eats your week?</h2>
-          <p>Tell us about it. The first conversation is free, and you'll come away knowing what could be automated.</p>
+          <h2>Let's find your team's hidden hours.</h2>
+          <p>Book a free 30-minute call. You'll leave with a clear picture of what could be automated and what it would be worth, whether or not we work together.</p>
         </div>
         <div class="contact-box">
-          <div class="eyebrow">Email</div>
+          <div class="eyebrow">Email Ilan</div>
           <div class="email-row">
             <span class="email" id="email">ilan@corvalytics.com</span>
             <button class="btn btn-ghost" id="copy" type="button">Copy</button>
           </div>
-          <a class="btn" href="mailto:ilan@corvalytics.com" style="align-self:flex-start">Send an email</a>
+          <a class="btn" href="mailto:ilan@corvalytics.com?subject=Free%2030-minute%20call" style="align-self:flex-start">Book a free call</a>
         </div>
       </div>
     </div>
@@ -272,17 +335,35 @@ footer { padding-block: 40px 56px; color: var(--muted); font-size: 14px; }
 
 <script>
   document.getElementById('yr').textContent = new Date().getFullYear();
-  const btn = document.getElementById('copy');
+
+  // Savings estimator
+  const AUTOMATED = 0.7, WEEKS = 48, FTE_HOURS = 2000;
+  const $ = id => document.getElementById(id);
+  const fmt = n => Math.round(n).toLocaleString('en-US');
+  function update() {
+    const people = +$('people').value, hours = +$('hours').value, rate = +$('rate').value;
+    $('peopleOut').textContent = people;
+    $('hoursOut').textContent = hours;
+    $('rateOut').textContent = '$' + rate;
+    const saved = people * hours * WEEKS * AUTOMATED;
+    $('hoursYear').textContent = fmt(saved);
+    $('valueYear').textContent = '$' + fmt(saved * rate);
+    const fte = saved / FTE_HOURS;
+    $('fte').textContent = (fte < 10 ? fte.toFixed(1) : Math.round(fte)) + ' full-time ' + (fte >= 0.95 && fte < 1.05 ? 'person' : 'people');
+  }
+  ['people', 'hours', 'rate'].forEach(id => $(id).addEventListener('input', update));
+  update();
+
+  // Copy email
+  const btn = $('copy');
   btn.addEventListener('click', () => {
-    const text = document.getElementById('email').textContent;
+    const text = $('email').textContent;
     const done = () => { btn.textContent = 'Copied'; setTimeout(() => btn.textContent = 'Copy', 1600); };
-    try {
-      navigator.clipboard.writeText(text).then(done, () => selectEmail());
-    } catch (e) { selectEmail(); }
-    function selectEmail() {
-      const r = document.createRange(); r.selectNodeContents(document.getElementById('email'));
+    const selectEmail = () => {
+      const r = document.createRange(); r.selectNodeContents($('email'));
       const s = getSelection(); s.removeAllRanges(); s.addRange(r);
-    }
+    };
+    try { navigator.clipboard.writeText(text).then(done, selectEmail); } catch (e) { selectEmail(); }
   });
 </script>
 
